@@ -2,27 +2,48 @@ package main
 
 import "fmt"
 
+// FullName enthält den Vor- und Nachnamen einer Person
 type FullName struct {
-	// TODO: add fields
+	FirstName string
+	LastName  string
 }
 
-// TODO: declare a structure for birth date
+// BirthDate enthält das Geburtsdatum einer Person
+type BirthDate struct {
+	Day   int
+	Month int
+	Year  int
+}
 
+// Profile enthält Informationen über eine Person, einschließlich Name, Geburtsdatum, Anzahl der Geschwister und Sternzeichen
 type Profile struct {
-	// TODO: embed full name and birth date information
+	FullName       // eingebettete Struktur für den vollständigen Namen
+	BirthDate      // eingebettete Struktur für das Geburtsdatum
 	NumberOfSiblings byte
-	ZodiacSign       rune
+	ZodiacSign      rune
 }
 
 func main() {
+	// Erstellen eines Profile-Objekts mit der Initialisierung der eingebetteten Strukturen
 	var me = Profile{
-		// TODO: set name and birth date information
-		NumberOfSiblings: 0,   // TODO: adjust
-		ZodiacSign:       ' ', // TODO: adjust
+		FullName: FullName{
+			FirstName: "Luis",
+			LastName:  "Allamand",
+		},
+		BirthDate: BirthDate{
+			Day:   19,
+			Month: 6,
+			Year:  2008,
+		},
+		NumberOfSiblings: 0,   
+		ZodiacSign:       'Z', 
 	}
+
 	fmt.Println(me)
 
 	fmt.Println("Siblings Before:", me.NumberOfSiblings)
-	// TODO: imagine, you get a little brother or sister
+
+	me.NumberOfSiblings++
+
 	fmt.Println("Siblings After:", me.NumberOfSiblings)
 }
